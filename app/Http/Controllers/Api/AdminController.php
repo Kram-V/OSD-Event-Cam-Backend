@@ -10,6 +10,15 @@ use Illuminate\Validation\ValidationException;
 
 class AdminController extends Controller
 {
+  public function get_users(Request $request) {
+    $all_users = User::where('id', '!=', $request->user()->id)->get();
+
+
+    return response()->json([
+      'data' => $all_users,
+    ]);
+  }
+
   public function create_user(Request $request) {
     $request->validate([
       'fullname' => 'required|string',

@@ -23,6 +23,8 @@ Route::post('/reset-password/{token}/{email}', [AuthController::class, 'reset_pa
 Route::middleware('auth:sanctum')->group(function() {
   Route::post('/logout', [AuthController::class, 'logout']);
 
+  Route::get('/get-users', [AdminController::class, 'get_users']);
+
   Route::post('/create-user', [AdminController::class, 'create_user']);
 
   Route::put('/approve-email/{user}', [AdminController::class, 'approve_email']);
