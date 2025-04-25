@@ -11,7 +11,7 @@ use Illuminate\Validation\ValidationException;
 class AdminController extends Controller
 {
   public function get_users(Request $request) {
-    $all_users = User::where('id', '!=', $request->user()->id)->get();
+    $all_users = User::where('id', '!=', $request->user()->id)->latest()->get();
 
 
     return response()->json([
