@@ -54,6 +54,17 @@ class AdminController extends Controller
     ], 200);
   }
 
+  public function disapprove_email(User $user) {
+    $user->update([
+      'is_approved' => false,
+    ]);
+
+    return response()->json([
+      'message' => "You have disapproved {$user->user} account",
+    ], 200);
+  }
+
+  
   public function deactivate_account(User $user) {
     $user->update([
       'is_active' => false,

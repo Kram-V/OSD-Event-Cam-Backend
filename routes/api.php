@@ -28,6 +28,7 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::post('/create-user', [AdminController::class, 'create_user']);
 
   Route::put('/approve-email/{user}', [AdminController::class, 'approve_email']);
+  Route::put('/disapprove-email/{user}', [AdminController::class, 'disapprove_email']);
   Route::put('/deactivate-account/{user}', [AdminController::class, 'deactivate_account']);
   Route::put('/activate-account/{user}', [AdminController::class, 'activate_account']);
   Route::put('/change-role/{user}', [AdminController::class, 'change_role']);
