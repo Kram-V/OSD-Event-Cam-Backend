@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\HelpController;
 use App\Http\Controllers\Api\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,8 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::put('/deactivate-account/{user}', [AdminController::class, 'deactivate_account']);
   Route::put('/activate-account/{user}', [AdminController::class, 'activate_account']);
   Route::put('/change-role/{user}', [AdminController::class, 'change_role']);
+
+  Route::post('/contact-form', [HelpController::class, 'contact_form']);
 
   Route::put('/update-profile/{user}', [ProfileController::class, 'update_profile']);
 });
