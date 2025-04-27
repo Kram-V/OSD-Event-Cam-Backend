@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\HelpController;
 use App\Http\Controllers\Api\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,8 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::put('/change-role/{user}', [AdminController::class, 'change_role']);
 
   Route::post('/contact-form', [HelpController::class, 'contact_form']);
+
+  Route::get('/stats', [DashboardController::class, 'stats']);
 
   Route::put('/update-profile/{user}', [ProfileController::class, 'update_profile']);
 });
