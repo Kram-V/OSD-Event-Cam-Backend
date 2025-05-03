@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\DashboardController;
+use App\Http\Controllers\Api\DepartmentController;
 use App\Http\Controllers\Api\HelpController;
 use App\Http\Controllers\Api\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,10 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::get('/stats', [DashboardController::class, 'stats']);
 
   Route::put('/update-profile/{user}', [ProfileController::class, 'update_profile']);
+
+  Route::get('/departments', [DepartmentController::class, 'departments']);
+  Route::post('/departments', [DepartmentController::class, 'create_department']);
+  Route::put('/departments/{department}', [DepartmentController::class, 'update_department']);
 });
 
 
