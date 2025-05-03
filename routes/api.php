@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\DepartmentController;
 use App\Http\Controllers\Api\HelpController;
 use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\ProgramController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +47,10 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::get('/departments', [DepartmentController::class, 'departments']);
   Route::post('/departments', [DepartmentController::class, 'create_department']);
   Route::put('/departments/{department}', [DepartmentController::class, 'update_department']);
+
+  Route::get('/programs', [ProgramController::class, 'programs']);
+  Route::post('/programs', [ProgramController::class, 'create_program']);
+  Route::put('/programs/{program}', [ProgramController::class, 'update_program']);
 });
 
 
