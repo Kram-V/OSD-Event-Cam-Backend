@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class ProgramController extends Controller
 {
     public function programs() {
-      $programs = Program::latest()->get();
+      $programs = Program::with('department')->latest()->get();
 
       return response()->json([
         'programs' => $programs,
