@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\DepartmentController;
+use App\Http\Controllers\Api\FaqController;
 use App\Http\Controllers\Api\HelpController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ProgramController;
@@ -51,6 +52,11 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::get('/programs', [ProgramController::class, 'programs']);
   Route::post('/programs', [ProgramController::class, 'create_program']);
   Route::put('/programs/{program}', [ProgramController::class, 'update_program']);
+
+  Route::get('/faqs', [FaqController::class, 'faqs']);
+  Route::post('/faqs', [FaqController::class, 'create_faq']);
+  Route::put('/faqs/{faq}', [FaqController::class, 'update_faq']);
+  Route::delete('/faqs/{id}', [FaqController::class, 'delete_faq']);
 });
 
 
