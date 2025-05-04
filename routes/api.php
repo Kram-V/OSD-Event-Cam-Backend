@@ -26,6 +26,8 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/forgot-password', [AuthController::class, 'forgot_password']);
 Route::post('/reset-password/{token}/{email}', [AuthController::class, 'reset_password']);
 
+Route::get('/mobile-stats', [DashboardController::class, 'mobile_stats']);
+
 Route::middleware('auth:sanctum')->group(function() {
   Route::post('/logout', [AuthController::class, 'logout']);
 
