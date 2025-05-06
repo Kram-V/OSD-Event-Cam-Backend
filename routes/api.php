@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\FaqController;
 use App\Http\Controllers\Api\HelpController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ProgramController;
+use App\Http\Controllers\Api\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,10 @@ Route::post('/forgot-password', [AuthController::class, 'forgot_password']);
 Route::post('/reset-password/{token}/{email}', [AuthController::class, 'reset_password']);
 
 Route::get('/mobile-stats', [DashboardController::class, 'mobile_stats']);
+
+Route::get('/mobile-departments', [ReportController::class, 'departments']);
+Route::get('/mobile-programs/{department_id}', [ReportController::class, 'programs']);
+Route::post('/mobile-reports', [ReportController::class, 'create_report']);
 
 Route::middleware('auth:sanctum')->group(function() {
   Route::post('/logout', [AuthController::class, 'logout']);
