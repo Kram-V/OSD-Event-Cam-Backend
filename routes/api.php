@@ -68,6 +68,7 @@ Route::middleware('auth:sanctum')->group(function() {
 
   Route::get('/reports', [ReportController::class, 'reports']);
   Route::get('/reports/{id}', [ReportController::class, 'report']);
+  Route::put('/reports/{report}', [ReportController::class, 'mark_as_resolved_report']);
 });
 
 

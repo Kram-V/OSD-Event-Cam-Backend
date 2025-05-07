@@ -26,6 +26,16 @@ class ReportController extends Controller
       ]);
     }
 
+    public function mark_as_resolved_report(Report $report) {
+      $report->update([
+        'status' => 'success',
+      ]);
+
+      return response()->json([
+        'message' => 'Report Marked as Resolved',
+      ]);
+    }
+
 
     public function create_report(Request $request) {
       $request->validate([
@@ -33,6 +43,7 @@ class ReportController extends Controller
         "program" => 'required|integer',
         "student_name" => 'required|string',
         "student_id" => 'required|string',
+        "year" => 'required|string',
         "guardian_name" => 'required|string',
         "guardian_phone_number" => 'required|string|regex:/^09\d{9}$/',
         "time" => 'required|string',
@@ -46,6 +57,7 @@ class ReportController extends Controller
         "program_id" => $request->program,
         "student_name" => $request->student_name,
         "student_id" => $request->student_id,
+        "year" => $request->year,
         "guardian_name" => $request->guardian_name,
         "guardian_phone_number" => $request->guardian_phone_number,
         "time" => $request->time,

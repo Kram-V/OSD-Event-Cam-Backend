@@ -21,8 +21,6 @@ class DashboardController extends Controller
       ]);
     }
 
-
-
     public function mobile_stats() {
       $admin_users = User::where('role', 'admin')->count();
       $non_admin_users = User::where('role', 'non-admin')->count();
