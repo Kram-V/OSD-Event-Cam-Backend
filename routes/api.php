@@ -65,6 +65,9 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::post('/faqs', [FaqController::class, 'create_faq']);
   Route::put('/faqs/{faq}', [FaqController::class, 'update_faq']);
   Route::delete('/faqs/{id}', [FaqController::class, 'delete_faq']);
+
+  Route::get('/reports', [ReportController::class, 'reports']);
+  Route::get('/reports/{id}', [ReportController::class, 'report']);
 });
 
 

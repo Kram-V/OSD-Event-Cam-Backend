@@ -10,6 +10,23 @@ use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
+    public function reports() {
+      $reports = Report::all();
+
+      return response()->json([
+        'reports' => $reports,
+      ]);
+    }
+
+    public function report($id) {
+      $report = Report::with(['department', 'program'])->where('id', $id)->first();
+
+      return response()->json([
+        'report' => $report,
+      ]);
+    }
+
+
     public function create_report(Request $request) {
       $request->validate([
         "department" => 'required|integer',

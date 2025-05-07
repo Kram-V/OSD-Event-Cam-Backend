@@ -20,4 +20,8 @@ class Program extends Model
     public function department() {
       return $this->belongsTo(Department::class);
     }
+    
+    public function reports() {
+      return $this->hasMany(Report::class);
+    }
 }

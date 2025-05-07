@@ -17,4 +17,8 @@ class Department extends Model
     public function programs() {
       return $this->hasMany(Program::class);
     }
+
+    public function reports() {
+      return $this->hasMany(Report::class);
+    }
 }
