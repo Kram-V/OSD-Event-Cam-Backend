@@ -14,6 +14,8 @@ class Report extends Model
       'program_id',
       'student_name',
       'student_id',
+      'guardian_name',
+      'guardian_phone_number',
       'time',
       'location',
       'violation_name',

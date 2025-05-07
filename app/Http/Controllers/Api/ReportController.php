@@ -12,25 +12,25 @@ class ReportController extends Controller
 {
     public function create_report(Request $request) {
       $request->validate([
-        "department_id" => 'required|integer',
-        "program_id" => 'required|integer',
+        "department" => 'required|integer',
+        "program" => 'required|integer',
         "student_name" => 'required|string',
         "student_id" => 'required|string',
+        "guardian_name" => 'required|string',
+        "guardian_phone_number" => 'required|string|regex:/^09\d{9}$/',
         "time" => 'required|string',
         "location" => 'required|string',
         "violation_name" => 'required|string',
         "violations" => 'nullable|json',
-        "other_violation_name" => 'nullable|string',
-        "explain_specify" => 'nullable|string',
-        "other_remarks" => 'nullable|string',
-        "photo_evidence" => 'nullable|string',
       ]);
 
       Report::create([
-        "department_id" => $request->department_id,
-        "program_id" => $request->program_id,
+        "department_id" => $request->department,
+        "program_id" => $request->program,
         "student_name" => $request->student_name,
         "student_id" => $request->student_id,
+        "guardian_name" => $request->guardian_name,
+        "guardian_phone_number" => $request->guardian_phone_number,
         "time" => $request->time,
         "location" => $request->location,
         "violation_name" => $request->violation_name,
