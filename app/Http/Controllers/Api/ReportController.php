@@ -10,6 +10,14 @@ use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
+    public function reports() {
+      $reports = Report::all();
+
+      return response()->json([
+        'reports' => $reports,
+      ]);
+    }
+
     public function create_report(Request $request) {
       $request->validate([
         "department" => 'required|integer',
@@ -43,7 +51,7 @@ class ReportController extends Controller
 
       return response()->json([
         'message' => 'Report Created Successfully',
-      ]);
+      ], 201);
     }
 
     public function departments() {
@@ -51,7 +59,7 @@ class ReportController extends Controller
 
       return response()->json([
         'departments' => $departments,
-      ]);
+      ], 200);
     }
 
     public function programs($department_id) {
@@ -59,6 +67,6 @@ class ReportController extends Controller
 
       return response()->json([
         'programs' => $programs,
-      ]);
+      ], 200);
     }
 }

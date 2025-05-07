@@ -31,6 +31,7 @@ Route::get('/mobile-stats', [DashboardController::class, 'mobile_stats']);
 
 Route::get('/mobile-departments', [ReportController::class, 'departments']);
 Route::get('/mobile-programs/{department_id}', [ReportController::class, 'programs']);
+Route::get('/mobile-reports', [ReportController::class, 'reports']);
 Route::post('/mobile-reports', [ReportController::class, 'create_report']);
 
 Route::middleware('auth:sanctum')->group(function() {
