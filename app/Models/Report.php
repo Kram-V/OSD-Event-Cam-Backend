@@ -15,6 +15,7 @@ class Report extends Model
       'student_name',
       'student_id',
       'year',
+      'section',
       'time',
       'location',
       'violation_name',
