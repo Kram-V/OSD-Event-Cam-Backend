@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\HelpController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ProgramController;
 use App\Http\Controllers\Api\ReportController;
+use App\Http\Controllers\Api\UserInstructionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -69,6 +70,11 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::get('/reports', [ReportController::class, 'reports']);
   Route::get('/reports/{id}', [ReportController::class, 'report']);
   Route::put('/reports/{report}', [ReportController::class, 'mark_as_resolved_report']);
+
+  Route::get('/user-instructions', [UserInstructionController::class, 'user_instructions']);
+  Route::post('/user-instructions', [UserInstructionController::class, 'create_instruction']);
+  Route::put('/user-instructions/{id}', [UserInstructionController::class, 'update_instruction']);
+  Route::delete('/user-instructions/{id}', [UserInstructionController::class, 'delete_instruction']);
 });
 
 
