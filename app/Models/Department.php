@@ -11,7 +11,7 @@ class Department extends Model
     use HasFactory;
 
     protected $fillable = [
-      'education_level_id',
+      'education_level_name',
       'name',
     ];
 

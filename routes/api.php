@@ -30,7 +30,7 @@ Route::post('/reset-password/{token}/{email}', [AuthController::class, 'reset_pa
 
 Route::get('/mobile-stats', [DashboardController::class, 'mobile_stats']);
 
-Route::get('/mobile-departments/{education_level_id}', [ReportController::class, 'departments']);
+Route::get('/mobile-departments', [ReportController::class, 'departments']);
 Route::get('/mobile-programs/{department_id}', [ReportController::class, 'programs']);
 Route::get('/mobile-reports', [ReportController::class, 'mobile_reports']);
 Route::post('/mobile-reports', [ReportController::class, 'create_report']);

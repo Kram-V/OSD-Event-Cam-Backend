@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->integer('education_level_id');
             $table->integer('department_id');
             $table->integer('program_id');
             $table->string('student_name');
             $table->string('student_id');
-            $table->string('year');
+            $table->string('year')->nullable();
+            $table->string('grade')->nullable();
             $table->string('section');
-            $table->time('time');
+            $table->time('time')->nullable();
             $table->string('location');
             $table->string('violation_name');
             $table->json('violations')->nullable();
