@@ -23,7 +23,5 @@ class Department extends Model
       return $this->hasMany(Report::class);
     }
 
-    public function education_level() {
-      return $this->belongsTo(EducationLevel::class);
-    }
+   
 }

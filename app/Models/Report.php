@@ -30,9 +30,6 @@ class Report extends Model
       'guardian_phone_number',
     ];
 
-    public function education_level() {
-      return $this->belongsTo(EducationLevel::class);
-    }
 
     public function department() {
       return $this->belongsTo(Department::class);

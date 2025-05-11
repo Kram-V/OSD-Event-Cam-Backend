@@ -4,7 +4,6 @@ use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\DepartmentController;
-use App\Http\Controllers\Api\EducationLevelController;
 use App\Http\Controllers\Api\FaqController;
 use App\Http\Controllers\Api\HelpController;
 use App\Http\Controllers\Api\ProfileController;
@@ -31,7 +30,6 @@ Route::post('/reset-password/{token}/{email}', [AuthController::class, 'reset_pa
 
 Route::get('/mobile-stats', [DashboardController::class, 'mobile_stats']);
 
-Route::get('/mobile-education-levels', [ReportController::class, 'education_levels']);
 Route::get('/mobile-departments/{education_level_id}', [ReportController::class, 'departments']);
 Route::get('/mobile-programs/{department_id}', [ReportController::class, 'programs']);
 Route::get('/mobile-reports', [ReportController::class, 'mobile_reports']);
@@ -55,10 +53,6 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::get('/stats', [DashboardController::class, 'stats']);
 
   Route::put('/update-profile/{user}', [ProfileController::class, 'update_profile']);
-
-  Route::get('/education-levels', [EducationLevelController::class, 'education_levels']);
-  Route::post('/education-levels', [EducationLevelController::class, 'create_education_level']);
-  Route::put('/education-levels/{education_level}', [EducationLevelController::class, 'update_education_level']);
 
   Route::get('/departments', [DepartmentController::class, 'departments']);
   Route::post('/departments', [DepartmentController::class, 'create_department']);

@@ -13,11 +13,11 @@ class ReportController extends Controller
 {
     public function reports(Request $request) {
       if ($request->query('educational_id') == 'all') {
-        $reports = Report::with('education_level')->get();
+        $reports = Report::with(['education_level', 'program'])->get();
       } else if($request->query('educational_id')) {
-        $reports = Report::with('education_level')->where('education_level_id', (int) $request->query('educational_id'))->get();
+        $reports = Report::with(['education_level', 'program'])->where('education_level_id', (int) $request->query('educational_id'))->get();
       } else {
-        $reports = Report::with('education_level')->get();
+        $reports = Report::with(['education_level', 'program'])->get();
       }
 
       return response()->json([
@@ -93,16 +93,9 @@ class ReportController extends Controller
       ], 201);
     }
 
-    public function education_levels() {
-      $education_levels = EducationLevel::all();
-
-      return response()->json([
-        'education_levels' => $education_levels,
-      ]);
-    }
  
     public function departments($education_level_id) {
-      $departments = Department::where('id', $education_level_id)->get();
+      $departments = Department::where('education_level_id', $education_level_id)->get();
 
       return response()->json([
         'departments' => $departments,
