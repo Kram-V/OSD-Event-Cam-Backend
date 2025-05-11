@@ -10,6 +10,7 @@ class Report extends Model
     use HasFactory;
 
     protected $fillable = [
+      'education_level_id',
       'department_id',
       'program_id',
       'student_name',
@@ -28,6 +29,10 @@ class Report extends Model
       'guardian_name',
       'guardian_phone_number',
     ];
+
+    public function education_level() {
+      return $this->belongsTo(EducationLevel::class);
+    }
 
     public function department() {
       return $this->belongsTo(Department::class);

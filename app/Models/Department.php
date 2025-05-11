@@ -11,6 +11,7 @@ class Department extends Model
     use HasFactory;
 
     protected $fillable = [
+      'education_level_id',
       'name',
     ];
 
@@ -20,5 +21,9 @@ class Department extends Model
 
     public function reports() {
       return $this->hasMany(Report::class);
+    }
+
+    public function education_level() {
+      return $this->belongsTo(EducationLevel::class);
     }
 }
