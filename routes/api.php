@@ -30,10 +30,11 @@ Route::post('/forgot-password', [AuthController::class, 'forgot_password']);
 Route::post('/reset-password/{token}/{email}', [AuthController::class, 'reset_password']);
 
 Route::get('/mobile-stats', [DashboardController::class, 'mobile_stats']);
-Route::get('/mobile-reports', [DashboardController::class, 'mobile_reports']);
 
-Route::get('/mobile-departments', [ReportController::class, 'departments']);
+Route::get('/mobile-education-levels', [ReportController::class, 'education_levels']);
+Route::get('/mobile-departments/{education_level_id}', [ReportController::class, 'departments']);
 Route::get('/mobile-programs/{department_id}', [ReportController::class, 'programs']);
+Route::get('/mobile-reports', [ReportController::class, 'mobile_reports']);
 Route::post('/mobile-reports', [ReportController::class, 'create_report']);
 
 Route::middleware('auth:sanctum')->group(function() {

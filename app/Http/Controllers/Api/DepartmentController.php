@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class DepartmentController extends Controller
 {
     public function departments() {
-      $departments = Department::latest()->get();
+      $departments = Department::with('education_level')->latest()->get();
 
       return response()->json([
         'departments' => $departments,

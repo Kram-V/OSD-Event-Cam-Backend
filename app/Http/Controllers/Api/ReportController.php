@@ -4,14 +4,21 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Department;
+use App\Models\EducationLevel;
 use App\Models\Program;
 use App\Models\Report;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
-    public function reports() {
-      $reports = Report::all();
+    public function reports(Request $request) {
+      if ($request->query('educational_id') == 'all') {
+        $reports = Report::with('education_level')->get();
+      } else if($request->query('educational_id')) {
+        $reports = Report::with('education_level')->where('education_level_id', (int) $request->query('educational_id'))->get();
+      } else {
+        $reports = Report::with('education_level')->get();
+      }
 
       return response()->json([
         'reports' => $reports,
@@ -19,7 +26,7 @@ class ReportController extends Controller
     }
 
     public function report($id) {
-      $report = Report::with(['department', 'program'])->where('id', $id)->first();
+      $report = Report::with(['department', 'program', 'education_level'])->where('id', $id)->first();
 
       return response()->json([
         'report' => $report,
@@ -36,9 +43,17 @@ class ReportController extends Controller
       ]);
     }
 
+    public function mobile_reports() {
+      $reports = Report::all();
+
+      return response()->json([
+        'reports' => $reports,
+      ]);
+    }
 
     public function create_report(Request $request) {
       $request->validate([
+        "education_level" => "required|integer",
         "department" => 'required|integer',
         "program" => 'required|integer',
         "student_name" => 'required|string',
@@ -54,6 +69,7 @@ class ReportController extends Controller
       ]);
 
       Report::create([
+        "education_level_id" => $request->education_level,
         "department_id" => $request->department,
         "program_id" => $request->program,
         "student_name" => $request->student_name,
@@ -77,8 +93,16 @@ class ReportController extends Controller
       ], 201);
     }
 
-    public function departments() {
-      $departments = Department::all();
+    public function education_levels() {
+      $education_levels = EducationLevel::all();
+
+      return response()->json([
+        'education_levels' => $education_levels,
+      ]);
+    }
+ 
+    public function departments($education_level_id) {
+      $departments = Department::where('id', $education_level_id)->get();
 
       return response()->json([
         'departments' => $departments,

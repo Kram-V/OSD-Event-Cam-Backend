@@ -24,10 +24,12 @@ class DashboardController extends Controller
     public function mobile_stats() {
       $admin_users = User::where('role', 'admin')->count();
       $non_admin_users = User::where('role', 'non-admin')->count();
+      $total_reports = Report::all()->count();
 
       return response()->json([
         'total_admin_users' => $admin_users,
-        'total_non_admin_users' => $non_admin_users
+        'total_non_admin_users' => $non_admin_users,
+        'total_reports' => $total_reports
       ]);
     }
 
