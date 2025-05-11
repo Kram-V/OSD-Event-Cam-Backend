@@ -35,6 +35,12 @@ class ProfileController extends Controller
         ]);
       }
 
+      if (!$request->password && $request->password_confirmation) {
+        $request->validate([
+          'password' => 'required'
+        ]);
+      }
+
       return response()->json([
         'message' => 'Your account updated successfully',
         'user' => $user->fresh()->makeHidden(['password', 'token']),
