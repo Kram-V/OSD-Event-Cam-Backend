@@ -53,7 +53,7 @@ class ProgramController extends Controller
 
       if (!$department) {
         return response()->json([
-          'message' => 'There is no department id that you are inserting to',
+          'message' => 'There is no department id that you are updating to',
         ], 404);
       }
 

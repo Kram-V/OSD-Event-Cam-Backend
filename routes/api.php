@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AdminController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\DepartmentController;
+use App\Http\Controllers\Api\EducationLevelController;
 use App\Http\Controllers\Api\FaqController;
 use App\Http\Controllers\Api\HelpController;
 use App\Http\Controllers\Api\ProfileController;
@@ -53,6 +54,10 @@ Route::middleware('auth:sanctum')->group(function() {
   Route::get('/stats', [DashboardController::class, 'stats']);
 
   Route::put('/update-profile/{user}', [ProfileController::class, 'update_profile']);
+
+  Route::get('/education-levels', [EducationLevelController::class, 'education_levels']);
+  Route::post('/education-levels', [EducationLevelController::class, 'create_education_level']);
+  Route::put('/education-levels/{education_level}', [EducationLevelController::class, 'update_education_level']);
 
   Route::get('/departments', [DepartmentController::class, 'departments']);
   Route::post('/departments', [DepartmentController::class, 'create_department']);
