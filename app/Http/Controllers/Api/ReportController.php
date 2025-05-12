@@ -12,20 +12,16 @@ use Illuminate\Http\Request;
 class ReportController extends Controller
 {
     public function reports(Request $request) {
-      if ($request->query('educational_level') === 'All') {
-        $reports = Report::with(['program', 'department'])->get();
-      } else if ($request->query('educational_level') === 'College') {
-          $reports = Report::with(['program', 'department'])
-          ->whereHas('department', function ($query) {
-              $query->where('education_level_name', 'College');
-          })
-          ->get();
+      if ($request->query('educational_level') === 'College') { 
+        $reports = Report::with(['program', 'department'])
+        ->whereHas('department', function ($query) {
+            $query->where('education_level_name', 'College');
+        })->get();
       } else if ($request->query('educational_level') === 'Integrated School') {
-          $reports = Report::with(['program', 'department'])
-          ->whereHas('department', function ($query) {
-              $query->where('education_level_name', 'Integrated School');
-          })
-          ->get();
+        $reports = Report::with(['program', 'department'])
+        ->whereHas('department', function ($query) {
+            $query->where('education_level_name', 'Integrated School');
+        })->get();
       } else {
          $reports = Report::with(['program', 'department'])->get();
       }
