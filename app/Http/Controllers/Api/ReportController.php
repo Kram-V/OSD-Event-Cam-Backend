@@ -41,7 +41,7 @@ class ReportController extends Controller
 
     public function mark_as_resolved_report(Report $report) {
       $report->update([
-        'status' => 'success',
+        'status' => 'resolved',
       ]);
 
       return response()->json([
@@ -60,6 +60,7 @@ class ReportController extends Controller
     public function create_report(Request $request) {
       if ($request->education_level_name === 'College') {
         $request->validate([
+          "education_level_name" => 'required|string',
           "department" => 'required|integer',
           "program" => 'required|integer',
           "student_name" => 'required|string',
@@ -95,6 +96,7 @@ class ReportController extends Controller
 
       } else {
         $request->validate([
+          "education_level_name" => 'required|string',
           "department" => 'required|integer',
           "program" => 'required|integer',
           "student_name" => 'required|string',

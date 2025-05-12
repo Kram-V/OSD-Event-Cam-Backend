@@ -12,7 +12,7 @@ class DashboardController extends Controller
     public function stats() {
       $admin_users = User::where('role', 'admin')->count();
       $non_admin_users = User::where('role', 'non-admin')->count();
-      $total_resolved_reports = Report::where('status', 'success')->count();
+      $total_resolved_reports = Report::where('status', 'resolved')->count();
       $total_pending_reports = Report::where('status', 'pending')->count();
       $total_reports = Report::all()->count();
   
@@ -29,7 +29,7 @@ class DashboardController extends Controller
     public function mobile_stats() {
       $admin_users = User::where('role', 'admin')->count();
       $non_admin_users = User::where('role', 'non-admin')->count();
-      $total_resolved_reports = Report::where('status', 'success')->count();
+      $total_resolved_reports = Report::where('status', 'resolved')->count();
       $total_pending_reports = Report::where('status', 'pending')->count();
       $total_reports = Report::all()->count();
   
